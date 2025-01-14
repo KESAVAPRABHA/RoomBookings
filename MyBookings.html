@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - StayBooker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background-color: #1a237e;
+            padding: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a237e;
+        }
+
+        .booking {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .booking-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cancel-button {
+            background: #e53935;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .cancel-button:hover {
+            background: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="RoomBookings.html">Home</a>
+        <a href="RoomBookings_Login.html#login">Logout</a>
+        <a href="contactus.html">Contact Us</a>
+    </nav>
+
+    <div class="container">
+        <h1>My Bookings</h1>
+        <div id="bookingsList">
+            <div class="booking">
+                <div class="booking-info">
+                    <p><strong>Room:</strong> Deluxe Room</p>
+                    <p><strong>Check-in:</strong> 2024-01-20</p>
+                    <p><strong>Check-out:</strong> 2024-01-25</p>
+                </div>
+                <button class="cancel-button">Cancel</button>
+            </div>
+            <div class="booking">
+                <div class="booking-info">
+                    <p><strong>Room:</strong> Suite</p>
+                    <p><strong>Check-in:</strong> 2024-02-15</p>
+                    <p><strong>Check-out:</strong> 2024-02-20</p>
+                </div>
+                <button class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bookingsList = document.getElementById("bookingsList");
+
+            bookingsList.addEventListener("click", (event) => {
+                if (event.target.classList.contains("cancel-button")) {
+                    const booking = event.target.closest(".booking");
+                    
+                    const confirmCancel = confirm("Are you sure you want to cancel this booking?");
+                    if (confirmCancel) {
+                        booking.remove();
+                        alert("Booking cancelled successfully.");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
